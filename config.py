@@ -8,6 +8,11 @@ class Config:
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kernaeljoy:benter92@localhost/personalblog'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
+    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = os.environ.get("kernaelapuko5@gmail.com")
+    MAIL_PASSWORD = os.environ.get("benter92")
 
 
     pass
