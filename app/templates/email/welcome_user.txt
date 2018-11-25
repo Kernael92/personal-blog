@@ -1,0 +1,2 @@
+Hello {{user.username}}
+Welcome to personalblog. Please enjoy reading all your favorite blogs and leave a comment.
