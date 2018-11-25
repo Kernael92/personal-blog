@@ -44,5 +44,11 @@ class Blog(db.Model):
     blog = db.Column(db.String)
     users = db.relationship('User',backref = 'blog',lazy = "dynamic")
 
+    def save_blog(self):
+        db.session.add(self)
+        db.session.commit()
+    
+
+
     def __repr__(self):
         return f'Blog {self.blog}'
