@@ -71,6 +71,8 @@ def new_blog():
         return redirect(url_for('main.index'))
     return render_template('blogs.html',form=form,)
 
+@main.route('/blog/comment/new/<int:blog_id>', method = ['GET','POST'])
+
 
     
 
