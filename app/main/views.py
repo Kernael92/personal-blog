@@ -8,15 +8,15 @@ from .. import db,photos
 
 
 
-@main.route('/')
+@main.route('/', methods = ['GET','POST'])
 def index():
     '''
     View root page function that returns the index page and its data
     '''
-    blogs = Blog.query.all()
+    # blogs = Blog.query.all()
     title = 'Personal blog posts'
 
-    return render_template('index.htm', blogs = blogs, title = title)
+    return render_template('index.html', title = title)
 
 
 
