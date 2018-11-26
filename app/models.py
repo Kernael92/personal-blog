@@ -48,6 +48,16 @@ class Blog(db.Model):
     def save_blog(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def get_all_blogs(cls):
+        '''
+        Function that queries the database and returns all the blogs
+        '''
+
+        return Blog.query.all()
+        
+
     
 
 

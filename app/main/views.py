@@ -13,10 +13,10 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    # blogs = Blog.query.all()
+    blogs = Blog.get_all_blogs()
     title = 'Personal blog posts'
 
-    return render_template('index.html', title = title)
+    return render_template('index.html', title = title, blogs = blogs)
 
 
 
