@@ -21,3 +21,17 @@
 
 </div>
 {% endmacro %}
+{% macro displayComment(comments) %}
+<ul>
+
+    {% for comment in comments %}
+        <div class="row">
+                <p>{{ comment.description }}</p>
+                <small> posted by {{comment.user.username}}</small>
+        </div>
+    {% endfor %}
+
+
+</ul>
+{% endmacro %}
+

@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import 'macros.html' as macro%}
+
+
+
+{% block content%}
+    <div class='container'>
+        <div class="row">
+            <div class="panel panel-header">
+                <h3>{{blog.title}}</h3>
+           
+                
+                    <h4>{{blog.blog}}</h4>
+                </div>
+
+            <div class="panel panel-body">
+            <div class="col-md-8">
+                {{wtf.quick_form(form )}}
+                
+
+            </div>
+            <div class="col-md-12">
+                <h4>Comments</h4>
+                {{macro.displayComment(comment)}}
+
+            </div>
+            </div>  
+
+        </div>
+
+    </div>
+{% endblock%}
