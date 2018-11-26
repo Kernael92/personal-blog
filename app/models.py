@@ -56,6 +56,11 @@ class Blog(db.Model):
         '''
 
         return Blog.query.all()
+
+    @classmethod
+    def get_blogs(cls,id):
+        blogs = Blog.query.order_by(blog_id = id).desc.all()
+        return blogs
         
 
     

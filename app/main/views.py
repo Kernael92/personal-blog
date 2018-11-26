@@ -1,8 +1,8 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,Blog
-from .forms import UpdateProfile,BlogForm
+from ..models import User,Blog,Comment
+from .forms import UpdateProfile,BlogForm,CommentForm
 from .. import db,photos
 
 
@@ -72,6 +72,20 @@ def new_blog():
     return render_template('blogs.html',form=form,)
 
 @main.route('/blog/comment/new/<int:blog_id>', method = ['GET','POST'])
+@login_required
+def new_comment(blog_id):
+    form = CommentForm()
+    blog = Blog.query.get(blog_id)
+    if form.validate_on_submit():
+        description = form.description.data
+        new_comment = Comment(description = description, user_id = current_user._get_current_object().id, blog_id = blog_id)
+        db.session.add(new_comment)
+        db.session.commit()
+
+        return redirect(url_for('.new_comment',blog_id = blog_id))
+    all_comments = Comment.query.filter_by(blog_id=blog_id).all()
+    return render_template('comments.html',form = form ,comment = all_comments, blog=blog)
+
 
 
     
