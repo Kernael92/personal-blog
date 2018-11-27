@@ -15,11 +15,12 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True, index = True)
-    blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
+    blogs = db.relationship('Blog',backref = 'user',lazy = "dynamic")
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
+    comments = db.relationship('Comment',backref = 'user',lazy = 'dynamic')
 
     @property
     def password(self):
@@ -42,8 +43,8 @@ class Blog(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     title = db.Column(db.String(255))
     blog = db.Column(db.String)
-    users = db.relationship('User',backref = 'blog',lazy = "dynamic")
     comments = db.relationship('Comment',backref = 'blog',lazy = 'dynamic')
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def save_blog(self):
         db.session.add(self)
@@ -75,6 +76,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
     description = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def save_comments(self):
         db.session.add(self)
