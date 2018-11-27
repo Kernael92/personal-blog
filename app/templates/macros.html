@@ -3,11 +3,11 @@
     {% for blog in blog_list %}
     <div class="col-md-9">
         <div class="panel panel-header"></div>
-            <h3>{{blog.title}}</h3>
+            <h3 style="text-align: center; font-family: cursive; font-size: 30px;">{{blog.title}}</h3>
             <div class="panel panel-body">
-                <p>{{blog.blog}}</p>
+                <h4 style="font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; ;font-size: 20px">{{blog.blog}}</h4>
 
-                <footer>Posted by {{blog.user.username}}</footer>
+                <footer style="font-family: cursive; font-size: 20px;">Posted by {{blog.user.username}}</footer>
                 <a href="{{url_for('main.new_comment', blog_id = blog.id)}}" class="btn btn-success"> Add a comment </a>
 
 

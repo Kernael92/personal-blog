@@ -84,3 +84,5 @@ class Comment(db.Model):
     def __repe__(self):
         return f"Comment : id {self.id} comment : {self.description}"
 
+
+
