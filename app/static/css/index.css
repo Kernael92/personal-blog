@@ -2,6 +2,7 @@ body {
     margin: 20px;
     padding: 20px;
     border: 20px;
+    background-color: beige;
      
 
 
@@ -11,4 +12,7 @@ h3 {
     font-family: cursive;
     font-size: 20px;
     
+}
+.panel {
+    background-color: aqua;
 }
